@@ -7,7 +7,8 @@ import cl.mariogonzalez.desafioacidlabs.model.response.Response;
 
 public interface ResponseService {
 
-	public Response getResponse() throws DesafioacidlabsClientExeption,DesafioacidlabsConverterException,DesafioacidlabsServiceExeption;
+	
+	public Response getResponse(String item_condition) throws DesafioacidlabsClientExeption,DesafioacidlabsConverterException,DesafioacidlabsServiceExeption;
 	
 	
 }

@@ -22,6 +22,9 @@ public class ResponseConverterImpl implements ResponseConverter {
 		
 		Response response = new Response();
 		
+		List<Item> news = new ArrayList<Item>();
+		List<Item> used = new ArrayList<Item>();
+		
 		for(cl.mariogonzalez.desafioacidlabs.model.request.Item itemRequest : request.getResults()) {
 			
 			Item itemResponse = new Item();
@@ -38,13 +41,16 @@ public class ResponseConverterImpl implements ResponseConverter {
 			Attribute  attribute = itemRequest.getAttributes().stream().filter(predicateId).filter(predicateValue).findFirst().orElse(null);
 			
 			if(attribute != null) {
-				response.getItems().getNew().add(itemResponse);
+				news.add(itemResponse);
 			}else {
-				response.getItems().getUsed().add(itemResponse);
+				used.add(itemResponse);
 			}
 						
 		}
 		
+		response.getItems().put("new", news);
+		response.getItems().put("used", used);
+
 		return response;
 	}
 	

@@ -22,13 +22,18 @@ public class ResponseServiceImpl implements ResponseService {
 	
 	
 	@Override
-	public Response getResponse() throws DesafioacidlabsClientExeption,DesafioacidlabsConverterException,DesafioacidlabsServiceExeption{
+	public Response getResponse(String item_condition) throws DesafioacidlabsClientExeption,DesafioacidlabsConverterException,DesafioacidlabsServiceExeption{
 		
 		
 		Request request =  callRestAPIClient.callRestAPI() ;
 		
 		Response response = responseConverter.requestToResponse(request);
-		
+				
+		if(item_condition.equals("used")) {
+			response.getItems().remove("new");
+		}else if(item_condition.equals("new")) {
+			response.getItems().remove("used");
+		}
 		return response;
 	}
 
