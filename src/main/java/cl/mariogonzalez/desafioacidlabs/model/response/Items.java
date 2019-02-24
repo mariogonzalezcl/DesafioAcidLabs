@@ -1,12 +1,17 @@
 package cl.mariogonzalez.desafioacidlabs.model.response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Items {
 	private List<Item> news;
 	private List<Item> used;
 	
+	
 	public Items() {
+		super();
+		this.news = new ArrayList<Item>();
+		this.used = new ArrayList<Item>();
 	}
 
 	public List<Item> getNew() {
