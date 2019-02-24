@@ -11,6 +11,6 @@ public class Item {
 	private String picture;
 	private Price price;
 	private String  buying_mode;
-	private List<Attribute> attribute;
+	private List<Attribute> attributes;
 	private Location location;
 }
