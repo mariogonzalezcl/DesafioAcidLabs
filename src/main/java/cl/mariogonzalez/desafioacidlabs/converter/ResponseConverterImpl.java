@@ -55,7 +55,7 @@ public class ResponseConverterImpl implements ResponseConverter {
 	}
 	
 	
-	public List<cl.mariogonzalez.desafioacidlabs.model.response.Attribute> listAttrRequestToAttrResponse(List<Attribute> attributesRequest) throws DesafioacidlabsConverterException {
+	private List<cl.mariogonzalez.desafioacidlabs.model.response.Attribute> listAttrRequestToAttrResponse(List<Attribute> attributesRequest) throws DesafioacidlabsConverterException {
 
 		List<cl.mariogonzalez.desafioacidlabs.model.response.Attribute> attributesResponse = new ArrayList<cl.mariogonzalez.desafioacidlabs.model.response.Attribute>(); 
 		

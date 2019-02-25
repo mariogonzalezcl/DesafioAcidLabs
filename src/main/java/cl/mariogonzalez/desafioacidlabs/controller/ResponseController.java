@@ -1,7 +1,5 @@
 package cl.mariogonzalez.desafioacidlabs.controller;
 
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,25 +18,29 @@ import cl.mariogonzalez.desafioacidlabs.service.ResponseService;
 
 @RestController
 public class ResponseController {
-	
+
 	@Autowired
 	private ResponseService responseService;
-	
-	private final static Logger LOGGER = Logger.getLogger("cl.mariogonzalez.desafioacidlabs.controller.ResponseController");
 
-	@RequestMapping(value = { "/items"}, method = RequestMethod.GET) 
-	public @ResponseBody ResponseEntity<Response> response( @RequestParam(name = "item_condition", required = false ,defaultValue="") String item_condition 
-			) throws DesafioacidlabsClientExeption,DesafioacidlabsConverterException,DesafioacidlabsServiceExeption{
-		
-		if(StringUtils.isEmpty(item_condition) && !(item_condition.equals("used") || item_condition.equals("new"))) {
+	@RequestMapping(value = { "/items" }, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<Response> response(
+			@RequestParam(name = "item_condition", required = false, defaultValue = "") String item_condition)
+			throws DesafioacidlabsClientExeption, DesafioacidlabsConverterException, DesafioacidlabsServiceExeption {
+
+		if (StringUtils.isEmpty(item_condition) && !(item_condition.equals("used") || item_condition.equals("new"))) {
 			item_condition = "";
 		}
-		
-		Response response = responseService.getResponse(item_condition);
 
-		LOGGER.info(item_condition);
-		
-		return new ResponseEntity<Response>(response,HttpStatus.OK);
+		Response response = responseService.getResponse(item_condition);
+		return new ResponseEntity<Response>(response, HttpStatus.OK);
 	}
-	
+
+	@RequestMapping("/*")
+	public @ResponseBody ResponseEntity<String> page() {
+
+		String response ="Api suported :<br> GET /items?item_condition= {new|used}  attribute \"item_condition\" is optional";
+
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
+
 }

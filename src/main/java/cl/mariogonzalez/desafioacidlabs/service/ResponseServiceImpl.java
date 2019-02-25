@@ -24,7 +24,6 @@ public class ResponseServiceImpl implements ResponseService {
 	@Override
 	public Response getResponse(String item_condition) throws DesafioacidlabsClientExeption,DesafioacidlabsConverterException,DesafioacidlabsServiceExeption{
 		
-		
 		Request request =  callRestAPIClient.callRestAPI() ;
 		
 		Response response = responseConverter.requestToResponse(request);
